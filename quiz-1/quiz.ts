@@ -48,7 +48,7 @@ class Mario {
         } else {
             this.HP -= 1;
             this.currentForm = 'mario'; 
-            console.log("-> HP berkurang, form dan kecepatan kembali normal.");
+            console.log("-> HP berkurang, form kembali normal.");
             
             if (this.HP <= 0) {
                 console.log("-> GAME OVER!");
@@ -156,7 +156,7 @@ mario.tampilkanStat();
 // Berjalan normal
 mario.bergerakKanan(); 
 
-// Variabel induk menampung object turunan (Polymorphism)[cite: 4]
+// Variabel induk menampung object turunan (Polymorphism)
 let item: PowerUp; 
 
 // Skenario: Ambil Jamur
@@ -187,5 +187,5 @@ mario.invincible = false;
 // Skenario: Diserang musuh saat normal
 mario.diserang();
 
-// Buktikan speed kembali lambat dan mundur ke kiri
+// mundur ke kiri
 mario.bergerakKiri();
