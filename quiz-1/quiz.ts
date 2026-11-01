@@ -48,7 +48,6 @@ class Mario {
         } else {
             this.HP -= 1;
             this.currentForm = 'mario'; 
-            this.speed = 5; // Kecepatan di-reset ke normal
             console.log("-> HP berkurang, form dan kecepatan kembali normal.");
             
             if (this.HP <= 0) {
@@ -140,7 +139,6 @@ class SuperStar extends PowerUp {
     applyPowerUp(mario: Mario): void {
         super.applyPowerUp(mario);
         mario.invincible = true;
-        mario.speed = 10; // Kecepatan bertambah menjadi 10
         mario.tampilkanStat();
     }
 }
