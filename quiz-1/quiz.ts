@@ -31,12 +31,12 @@ class Mario {
     public invincible: boolean = false;
     public currentForm: string = 'mario';
 
-    // Method pembantu untuk menampilkan status terkini
+   
     tampilkanStat(): void {
         console.log(`[STAT] Form: ${this.currentForm} | HP: ${this.HP} | Speed: ${this.speed} | Posisi X: ${this.positionX} | Kebal: ${this.invincible}`);
     }
 
-    // Method 4: Diserang
+    
     diserang(): void {
         console.log("\nAction: Mario diserang musuh!");
         
@@ -45,7 +45,7 @@ class Mario {
         } else {
             this.HP -= 1;
             this.currentForm = 'mario'; 
-            this.speed = 5; // Kecepatan di-reset ke normal
+            this.speed = 5; 
             console.log("-> HP berkurang, form dan kecepatan kembali normal.");
             
             if (this.HP <= 0) {
@@ -56,21 +56,21 @@ class Mario {
         this.tampilkanStat();
     }
 
-    // Method 5: Bergerak ke kanan (Posisi X + Speed)
+    
     bergerakKanan(): void {
         console.log("\nAction: Mario bergerak ke KANAN.");
         this.positionX += this.speed;
         this.tampilkanStat();
     }
 
-    // Method 6: Bergerak ke kiri (Posisi X - Speed)
+    
     bergerakKiri(): void {
         console.log("\nAction: Mario bergerak ke KIRI.");
         this.positionX -= this.speed;
         this.tampilkanStat();
     }
 
-    // Method tambahan
+    
     tembakApi(): void {
         console.log("\nAction: Mario mencoba menembak api.");
         if (this.currentForm === 'fire mario') {
@@ -86,39 +86,39 @@ class Mario {
 // 2. CLASS ITEM (INHERITANCE & POLYMORPHISM)
 // =====================================================================
 
-// Class Induk[cite: 3]
+// Class Induk
 class PowerUp {
     constructor(public namaItem: string) {}
 
-    // Method virtual yang akan di-override
+
     applyPowerUp(mario: Mario): void {
         console.log(`\nAction: Mario mendapatkan item [${this.namaItem}]`);
     }
 }
 
-// Turunan 1: SuperMushroom
+
 class SuperMushroom extends PowerUp {
     constructor() {
-        super("Super Mushroom"); // Panggil constructor induk[cite: 3]
+        super("Super Mushroom"); // Panggil constructor induk
     }
 
-    // Method overriding[cite: 4]
+    
     applyPowerUp(mario: Mario): void {
         super.applyPowerUp(mario); 
         mario.currentForm = 'super mario';
         mario.HP += 1;
-        // Tampilkan stat setelah mendapat item
+       
         mario.tampilkanStat();
     }
 }
 
-// Turunan 2: FireFlower
+
 class FireFlower extends PowerUp {
     constructor() {
         super("Fire Flower"); 
     }
 
-    // Method overriding[cite: 4]
+   
     applyPowerUp(mario: Mario): void {
         super.applyPowerUp(mario);
         mario.currentForm = 'fire mario';
@@ -127,17 +127,17 @@ class FireFlower extends PowerUp {
     }
 }
 
-// Turunan 3: SuperStar
+
 class SuperStar extends PowerUp {
     constructor() {
         super("Super Star");
     }
 
-    // Method overriding[cite: 4]
+    
     applyPowerUp(mario: Mario): void {
         super.applyPowerUp(mario);
         mario.invincible = true;
-        mario.speed = 10; // Kecepatan bertambah menjadi 10
+        mario.speed = 10; // 
         mario.tampilkanStat();
     }
 }
@@ -155,7 +155,7 @@ mario.tampilkanStat();
 // Berjalan normal
 mario.bergerakKanan(); 
 
-// Variabel induk menampung object turunan (Polymorphism)[cite: 4]
+
 let item: PowerUp; 
 
 // Skenario: Ambil Jamur
