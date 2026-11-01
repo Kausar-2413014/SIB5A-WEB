@@ -2,46 +2,61 @@ class NPC {
   name: string;
   health: number;
   speed: number;
-  defense: number;
   attack: number;
-  npcType: "walk" | "fly";
+  defense: number;
+  npcType: "Walk" | "Fly";
 
   constructor(
     name: string,
     health: number,
     speed: number,
-    defense: number,
     attack: number,
-    npcType: "walk" | "fly"
+    defense: number,
+    npcType: "Walk" | "Fly",
   ) {
     this.name = name;
     this.health = health;
     this.speed = speed;
-    this.defense = defense;
     this.attack = attack;
+    this.defense = defense;
     this.npcType = npcType;
   }
 
-
   walking(): void {
     this.speed += 2;
-    console.log(`${this.name} is walking. Speed is now ${this.speed}`);
+    console.log(`${this.name} berjalan. Speed sekarang: ${this.speed}`);
   }
 
-  
-  attacking(): void {
-    this.attack += 2;
-    console.log(`${this.name} is attacking. Attack is now ${this.attack}`);
-  }
-
-  
   sprint(): void {
     this.speed += 4;
-    console.log(`${this.name} is sprinting. Speed is now ${this.speed}`);
+    console.log(`${this.name} berlari. Speed sekarang: ${this.speed}`);
   }
 
-  ultimateSkill(): void {
-    this.attack += 10;
-    console.log(`${this.name} used Ultimate Skill! Attack is now ${this.attack}`);
+  attacking(): void {
+    this.attack += 2;
+    console.log(`${this.name} menyerang. Attack sekarang: ${this.attack}`);
+  }
+  getAttacked(demage: number): void {
+    this.attack -= demage;
+    console.log("${this.name} menyerang. Attack sekarang: ${this.attack}");
+  }
+
+  getBuff(): void {
+    this.health += this.health * 0.05;
+    this.attack = this.attack += 0.1 * 100;
+    console.log(`${this.health} bertambah.Attack sekarang :${this.attack}`);
+  }
+  getUltimate(): void {
+    this.speed = this.speed * 2;
+    this.attack = this.attack * 2;
+    this.health -= this.health * 0.5;
+    console.log(`
+     kecepatan sekarang ${this.speed}. 
+      Speed sekarang: ${this.attack} . 
+      darah sekarang : ${this.health}`);
   }
 }
+
+const goblin = new NPC("Goblin", 1000, 5, 10, 100, "Walk");
+
+goblin.getUltimate();
